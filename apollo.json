@@ -1,0 +1,23 @@
+
+{
+  "name": "apollo-workshop-anoop",
+  "image": "tutum/hello-world",
+  "containers": {
+    "web": {
+      "handoff": {
+        "method": "docker",
+        "ports": {
+          "container": 80,
+          "host": 80
+        }
+      },
+      "deployment": {
+        "load_balancer": {
+          "access": "internet",
+          "protocol": "http",
+          "health_check_uri": "/"
+        }
+      }
+    }
+  }
+}
