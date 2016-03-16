@@ -1,15 +1,19 @@
-
 GIT_COMMIT:=$(shell git rev-parse --short HEAD)
+IMAGE:=saltside/apollo-workshop-anoop
 
 .PHONY: build
 build: Dockerfile
-	docker build -t anoopprasad/apollo-workshop .
+	docker build -t $(IMAGE) .
 
 .PHONY: push
 push: build
-	docker tag anoopprasad/apollo-workshop anoopprasad/apollo-workshop:$(GIT_COMMIT)
-	docker push anoopprasad/apollo-workshop:$(GIT_COMMIT)
+	docker tag -f $(IMAGE) $(IMAGE):$(GIT_COMMIT)
+	docker push $(IMAGE):$(GIT_COMMIT)
+
+.PHONY: test
+test: build
+	bin/apollo validate
 
 .PHONY: deploy
 deploy: push
-	apollo deploy -e production -m bikroy -t $(GIT_COMMIT)
+	bin/apollo deploy -e production -m bikroy -t $(GIT_COMMIT)
