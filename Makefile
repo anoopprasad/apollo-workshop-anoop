@@ -1,5 +1,5 @@
 GIT_COMMIT:=$(shell git rev-parse --short HEAD)
-IMAGE:=saltside/apollo-workshop-anoop
+IMAGE:=anoopprasad/apollo-workshop-anoop
 
 .PHONY: build
 build: Dockerfile

@@ -1,7 +1,7 @@
 
 {
   "name": "apollo-workshop-anoop",
-  "image": "saltside/apollo-workshop-anoop",
+  "image": "anoopprasad/apollo-workshop-anoop",
   "containers": {
     "web": {
       "handoff": {
